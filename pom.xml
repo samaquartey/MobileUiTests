@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.missguided</groupId>
+  <artifactId>missguided</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>missguided</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://missguided.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <cukes.version>1.2.5</cukes.version>
+
+    <!--WebDriverManager-->
+    <webdrivermanager.version>3.7.1</webdrivermanager.version>
+    <junit.version>4.12</junit.version>
+    <selenium.version>3.141.59</selenium.version>
+
+    <pico.version>2.15</pico.version>
+    <log4j.version>2.12.1</log4j.version>
+    <!--<slf4j.version>1.7.29</slf4j.version>-->
+
+    <cucumber.jvm.parallel.plugin.version>5.0.0</cucumber.jvm.parallel.plugin.version>
+    <!--<parallel.forks>30</parallel.forks>-->
+
+    <maven.surefire.version>3.0.0-M3</maven.surefire.version>
+    <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+    <maven.assembly.version>3.2.0</maven.assembly.version>
+
+    <postgresql.version>42.2.5</postgresql.version>
+    <postgresql.jdbc.version>9.1-901-1.jdbc4</postgresql.jdbc.version>
+    <java.jdk.version>1.8</java.jdk.version>
+    <relevantcodes.version>2.41.2</relevantcodes.version>
+    <aventstack.version>4.0.8</aventstack.version>
+
+    <!-- Extent Report-->
+    <cucumber-extentreport>3.0.2</cucumber-extentreport>
+
+    <allure.java.annotations.version>1.5.4</allure.java.annotations.version>
+
+    <saucelabs.junit>2.1.25</saucelabs.junit>
+    <skipTests>false</skipTests>
+  </properties>
+
+  <dependencies>
+
+    <!--This is Cucumber Plugins-->
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cukes.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>${cukes.version}</version>
+      <!--<scope>test</scope>-->
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>${cukes.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.saucelabs</groupId>
+      <artifactId>saucerest</artifactId>
+      <version>1.0.39</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-server</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.picocontainer/picocontainer -->
+    <dependency>
+      <groupId>org.picocontainer</groupId>
+      <artifactId>picocontainer</artifactId>
+      <version>${pico.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-core</artifactId>
+      <version>1.2.5</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+    <dependency>
+      <groupId>io.appium</groupId>
+      <artifactId>java-client</artifactId>
+      <version>7.3.0</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>17.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.version}</version>
+
+
+        <configuration>
+          <!--Custom Properties-->
+          <systemPropertyVariables>
+            <env>remote</env>
+            <timer>30</timer>
+            <browser>androidDriver</browser>
+          </systemPropertyVariables>
+
+          <forkCount>4</forkCount>
+          <reuseForks>true</reuseForks>
+          <includes>
+            <include>**/Parallel*IT.class</include>
+          </includes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.temyers</groupId>
+        <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+        <version>${cucumber.jvm.parallel.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>generateRunners</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>generateRunners</goal>
+            </goals>
+            <configuration>
+              <glue>
+                <package>com.missguided</package>
+              </glue>
+              <!-- These are optional, with the default values -->
+              <!-- Where to output the generated tests -->
+              <outputDirectory>${project.build.directory}/generated-test-sources/cucumber
+              </outputDirectory>
+              <featuresDirectory>src/test/resources/Features/</featuresDirectory>
+              <cucumberOutputDir>target/cucumber-parallel/</cucumberOutputDir>
+              <plugins>
+                <plugin>
+                  <!--The available options are junit, testng, html, pretty, json, usage and rerun -->
+                  <name>json</name>
+                  <!--Optional file extension. For build in cucumber plugins a sensible default is provided. -->
+                  <extension>json</extension>
+                  <!--Optional output directory. Overrides cucumberOutputDirectory. Useful when different
+                      plugins create files with the same extension-->
+                  <outputDirectory>${project.build.directory}/cucumber-parallel/json</outputDirectory>
+                </plugin>
+              </plugins>
+
+              <strict>true</strict>
+              <!-- CucumberOptions.monochrome property -->
+              <monochrome>true</monochrome>
+
+              <!-- The tags to run, maps to CucumberOptions.tags property. Default is no tags. -->
+              <tags>
+                <tag>@regression</tag>
+                <!--<tag>@wip</tag>-->
+              </tags>
+
+              <!-- Generate TestNG runners instead of JUnit ones. -->
+              <useTestNG>false</useTestNG>
+              <!-- The naming scheme to use for the generated test classes.  One of ['simple', 'feature-title', 'pattern'] -->
+              <namingScheme>simple</namingScheme>
+              <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
+              <namingPattern>Parallel{c}IT</namingPattern>
+              <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
+              <parallelScheme>SCENARIO</parallelScheme>
+
+            </configuration>
+
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>
