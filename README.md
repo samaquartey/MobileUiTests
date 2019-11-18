@@ -7,3 +7,5 @@ but was of no good so api is just a demo based on mobile browsers rather than ap
 
 For UI.
 All was done, its just a case of having device name replaced and the test should still pass with the app launch to close.
+
+# To run test use runner class and change tags to run specific tests or use pom xml also requires tags.
