@@ -7,7 +7,7 @@ public class TestHooks extends DriverManager {
 
     @Before(order = 1)
     public void SetUpApp() {
-        /**  Method removed from here to aid api to also run without having to launch app so both ui & api can stay in same project **/
+        launchMobileDeviceAppOrBrowser();
     }
 
     @After(order = 1)

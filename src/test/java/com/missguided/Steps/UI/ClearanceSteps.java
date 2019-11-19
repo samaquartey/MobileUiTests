@@ -6,7 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
-public class ClearancePageSteps extends ClearancePage {
+public class ClearanceSteps extends ClearancePage {
 
     @Given("^I'm on the \"([^\"]*)\" screen$")
     public void iMOnTheScreen(String category) {

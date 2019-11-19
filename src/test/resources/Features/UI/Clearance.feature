@@ -10,5 +10,5 @@ Feature: Clearance
     Then I am on the Sign In and Register screen
 
     Examples:
-    | Category |Item                                              |
-    |Clearance | Black Satin Diamante Cut Out Bodycon Mini Dress  |
+    | Category | Item                                            |
+    |Clearance | Black Satin Diamante Cut Out Bodycon Mini Dress |
