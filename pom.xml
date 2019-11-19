@@ -156,7 +156,8 @@
           <systemPropertyVariables>
             <env>remote</env>
             <timer>30</timer>
-            <browser>androidDriver</browser>
+            <!--<browser>chrome</browser>-->
+            <!--<browser>androidDriver</browser>-->
           </systemPropertyVariables>
 
           <forkCount>4</forkCount>

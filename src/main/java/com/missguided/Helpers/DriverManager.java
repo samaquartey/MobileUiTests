@@ -10,10 +10,10 @@ import java.util.concurrent.TimeUnit;
 public class DriverManager {
     /** AndroidDriver **/
     protected static AndroidDriver<MobileElement> Driver;
-    protected DesiredCapabilities caps;
+    private DesiredCapabilities caps;
 
     /** default timeout **/
-    protected int defaultTime;
+    private int defaultTime;
 
     public DriverManager(){
         defaultTime = Integer.parseInt(System.getProperty("timer"));
@@ -22,35 +22,6 @@ public class DriverManager {
 
     /** launch App on mobile device **/
     protected void launchMobileDeviceAppOrBrowser() {
-        switch (System.getProperty("browser"))
-        {
-            case "chrome":
-                launchAndroidMobileBrowser();
-                break;
-
-            case "androidDriver":
-                launchAndroidMobileAppDriver();
-                break;
-        }
-        Driver.manage().timeouts().implicitlyWait(defaultTime, TimeUnit.SECONDS);
-    }
-
-
-    /** mobile browser **/
-    public void launchAndroidMobileBrowser(){
-        WebDriverManager.seleniumServerStandalone().setup();
-        try{
-            caps.setCapability("platformName", "ANDROID");
-            caps.setCapability("deviceName", "28f08770963f7ece");
-            caps.setCapability("browser", "CHROME");
-            Driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /** mobile app **/
-    public void launchAndroidMobileAppDriver(){
         WebDriverManager.seleniumServerStandalone().setup();
         try {
             caps.setCapability("platformName", "ANDROID");
@@ -61,10 +32,11 @@ public class DriverManager {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        Driver.manage().timeouts().implicitlyWait(defaultTime, TimeUnit.SECONDS);
     }
 
     /** Quit App on mobile device **/
-    public void closeMobileAppOrBrowser(){
+    protected void closeMobileAppOrBrowser(){
         if (Driver != null)
         Driver.quit();
         Driver = null;
