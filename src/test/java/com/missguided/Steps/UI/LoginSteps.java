@@ -22,11 +22,6 @@ public class LoginSteps extends LoginPage {
         signInToMyAccount();
     }
 
-    @Then("^I am successfully on expected page$")
-    public void iAmSuccessfullyOnExpectedPage() {
-
-    }
-
     @Then("^I am successfully on expected page & have \"([^\"]*)\"$")
     public void iAmSuccessfullyOnExpectedPageHave(String menus) {
         Assert.assertEquals("account message is wrong","Welcome " + readPropertyFile("user"),myAccountPage.getWelcomePageMessage());
