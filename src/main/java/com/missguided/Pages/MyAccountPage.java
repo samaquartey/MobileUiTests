@@ -1,5 +1,4 @@
 package com.missguided.Pages;
-
 import com.missguided.Helpers.BasePage;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
