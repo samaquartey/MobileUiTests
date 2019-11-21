@@ -1,6 +1,6 @@
 Feature: My Account
 
-  @wip
+  @regression
   Scenario Outline: 1. Verify my account page
     Given I am on the "<Options>" page
     When I login with my details
