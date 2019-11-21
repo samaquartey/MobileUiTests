@@ -20,6 +20,6 @@ public class ClearanceSteps extends ClearancePage {
 
     @Then("^I am on the Sign In and Register screen$")
     public void iAmOnTheSignInAndRegisterScreen() {
-        Assert.assertTrue("SignIn or Register btn not present",checkElementOnRegisterOrSignInPage());
+        Assert.assertTrue("SignIn or Register btn not present", checkElementsOnRegisterOrSignInPage());
     }
 }

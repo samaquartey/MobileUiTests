@@ -154,7 +154,7 @@
         <configuration>
           <!--Custom Properties-->
           <systemPropertyVariables>
-            <env>remote</env>
+            <env>androidLocal</env>
             <timer>30</timer>
             <!--<browser>chrome</browser>-->
             <!--<browser>androidDriver</browser>-->
