@@ -10,12 +10,12 @@ public class MyAccountPage extends BasePage {
     private List<MobileElement> displayElements;
 
     public String getWelcomePageMessage(){
-        welcomePageMessage = Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_account_welcome_text_view").getText();
+        welcomePageMessage = Driver.findElementById(AppUrl+"id/content_block_account_welcome_text_view").getText();
         return welcomePageMessage;
     }
 
     public int checkAllDisplayMenus(){
-        displayElements = Driver.findElements(By.id("com.poqstudio.app.platform.missguided:id/content_block_link_view_text_view"));
+        displayElements = Driver.findElements(By.id(AppUrl+"id/content_block_link_view_text_view"));
         return displayElements.size();
     }
 
@@ -24,7 +24,7 @@ public class MyAccountPage extends BasePage {
         String addressBook = menus[0];
         String myAccount = menus[1];
         String orderHistory = menus[2];
-        displayElements = Driver.findElements(By.id("com.poqstudio.app.platform.missguided:id/content_block_link_view_text_view"));
+        displayElements = Driver.findElements(By.id(AppUrl+"id/content_block_link_view_text_view"));
         return displayElements.stream().anyMatch(element -> element.getText().equals(addressBook))
                 && displayElements.stream().anyMatch(element -> element.getText().equals(myAccount))
                 && displayElements.stream().anyMatch(element -> element.getText().equals(orderHistory));

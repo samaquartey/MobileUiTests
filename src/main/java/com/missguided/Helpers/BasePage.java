@@ -2,6 +2,7 @@ package com.missguided.Helpers;
 import io.appium.java_client.MobileElement;
 
 public class BasePage extends DriverManager {
+
     private MobileElement addToBagBtn;
     private MobileElement getStarted;
     private MobileElement burgerIcon;
@@ -9,6 +10,7 @@ public class BasePage extends DriverManager {
     private MobileElement registerBtn;
     protected MobileElement signInBtn;
     protected MobileElement loginBtn;
+    protected static String AppUrl = "com.poqstudio.app.platform.missguided:";
 
     /** click on method**/
     protected void clickOnElement(MobileElement element){
@@ -30,7 +32,7 @@ public class BasePage extends DriverManager {
     protected void clickOnAddToBagBtn(){
         String visibleText = "ADD TO BAG";
         Driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))");
-        addToBagBtn = Driver.findElementById("com.poqstudio.app.platform.missguided:id/product_info_section_add_to_bag_button");
+        addToBagBtn = Driver.findElementById(AppUrl+"id/product_info_section_add_to_bag_button");
         addToBagBtn.click();
     }
 
@@ -40,7 +42,7 @@ public class BasePage extends DriverManager {
     }
 
     protected void clickOnGetStated(){
-        getStarted = Driver.findElementById("com.poqstudio.app.platform.missguided:id/onboarding_activity_get_started_btn");
+        getStarted = Driver.findElementById(AppUrl+"id/onboarding_activity_get_started_btn");
         getStarted.click();
     }
 
@@ -50,16 +52,16 @@ public class BasePage extends DriverManager {
     }
 
     protected void clickOnMoreOptions(){
-        moreOptions = Driver.findElementById("com.poqstudio.app.platform.missguided:id/action_more");
+        moreOptions = Driver.findElementById(AppUrl+"id/action_more");
         moreOptions.click();
     }
 
     protected MobileElement getSignInBtn(){
-        return Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button");
+        return Driver.findElementById(AppUrl+"id/content_block_login_view_sign_in_button");
     }
 
     protected MobileElement getRegisterBtn(){
-        return Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_login_view_register_button");
+        return Driver.findElementById(AppUrl+"id/content_block_login_view_register_button");
     }
 
     protected boolean checkElementsOnRegisterOrSignInPage(){
@@ -77,7 +79,7 @@ public class BasePage extends DriverManager {
 
     /** click on signIn into my account**/
     public void clickOnLoginBtn(){
-        loginBtn = Driver.findElementById("com.poqstudio.app.platform.missguided:id/activity_login_login_button");
+        loginBtn = Driver.findElementById(AppUrl+"id/activity_login_login_button");
         clickOnElement(loginBtn);
     }
 }

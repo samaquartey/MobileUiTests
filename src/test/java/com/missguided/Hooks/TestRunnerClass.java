@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         ,features = {"src/test/resources/"}		//Packages where the feature files are located
         ,snippets = SnippetType.CAMELCASE		//Used to determine what the method of the Step Def would be
         ,glue = {"com.missguided/"}  		//Package with Step Definitions and hooks
-        ,tags = {"@wip"}
+        ,tags = {"@regression"}
 )
 
 public class TestRunnerClass {

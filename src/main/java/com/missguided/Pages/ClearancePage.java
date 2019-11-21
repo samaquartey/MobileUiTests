@@ -1,5 +1,4 @@
 package com.missguided.Pages;
-
 import com.missguided.Helpers.BasePage;
 import io.appium.java_client.MobileElement;
 
@@ -23,7 +22,7 @@ public class ClearancePage extends BasePage
 
         bagItems = Driver.findElementByAccessibilityId("Bag");
         bagItems.click();
-        checkOutBtn = Driver.findElementById("com.poqstudio.app.platform.missguided:id/activity_modular_bag_checkout_button");
+        checkOutBtn = Driver.findElementById(AppUrl+"id/activity_modular_bag_checkout_button");
         checkOutBtn.click();
     }
 }
