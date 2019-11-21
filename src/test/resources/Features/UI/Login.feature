@@ -1,4 +1,4 @@
-Feature: My Account
+Feature: Login
 
   @regression
   Scenario Outline: 1. Verify my account page
