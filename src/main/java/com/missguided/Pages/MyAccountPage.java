@@ -7,8 +7,8 @@ import java.util.List;
 
 public class MyAccountPage extends BasePage {
 
-    protected String welcomePageMessage;
-    protected List<MobileElement> displayElements;
+    private String welcomePageMessage;
+    private List<MobileElement> displayElements;
 
     public String getWelcomePageMessage(){
         welcomePageMessage = Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_account_welcome_text_view").getText();
