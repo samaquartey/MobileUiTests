@@ -7,9 +7,19 @@ public class BasePage extends DriverManager {
     private MobileElement burgerIcon;
     private MobileElement moreOptions;
     private MobileElement registerBtn;
-    private MobileElement signInBtn;
+    protected MobileElement signInBtn;
+    protected MobileElement loginBtn;
 
+    /** click on method**/
+    protected void clickOnElement(MobileElement element){
+        element.click();
+    }
 
+    /** send keys method **/
+    protected void sendKeysToElementInput(MobileElement element, String text){
+        element.clear();
+        element.sendKeys(text);
+    }
 
     /** scroll to element using visible text and click **/
     protected void scrollAndClickWithVisibleText(String visibleText) {
@@ -44,10 +54,30 @@ public class BasePage extends DriverManager {
         moreOptions.click();
     }
 
+    protected MobileElement getSignInBtn(){
+        return Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button");
+    }
+
+    protected MobileElement getRegisterBtn(){
+        return Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_login_view_register_button");
+    }
+
     protected boolean checkElementsOnRegisterOrSignInPage(){
-        signInBtn = Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button");
-        registerBtn = Driver.findElementById("com.poqstudio.app.platform.missguided:id/content_block_login_view_register_button");
+        signInBtn = getSignInBtn();
+        registerBtn = getRegisterBtn();
         return signInBtn.isDisplayed() && signInBtn.isEnabled()
                 && registerBtn.isDisplayed() && registerBtn.isEnabled();
+    }
+
+    /** click allow permission to system folders**/
+    protected void clickAllowPermissionBtn(){
+        MobileElement allow = Driver.findElementById("com.android.packageinstaller:id/permission_allow_button");
+        clickOnElement(allow);
+    }
+
+    /** click on signIn into my account**/
+    public void clickOnLoginBtn(){
+        loginBtn = Driver.findElementById("com.poqstudio.app.platform.missguided:id/activity_login_login_button");
+        clickOnElement(loginBtn);
     }
 }

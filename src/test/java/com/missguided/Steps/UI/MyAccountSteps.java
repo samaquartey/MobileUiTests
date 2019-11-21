@@ -14,6 +14,8 @@ public class MyAccountSteps extends MyAccountPage {
 
     @When("^I login with my details$")
     public void iLoginWithMyDetails() {
+        goToSignInPage();
+        signInToMyAccount();
     }
 
     @Then("^I am successfully on expected page$")
