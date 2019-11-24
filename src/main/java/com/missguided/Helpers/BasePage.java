@@ -32,10 +32,15 @@ public class BasePage extends DriverManager {
         Driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))").click();
     }
 
+    /** scroll to element using visible text **/
+    protected void scrollToVisibleText(String visibleText) {
+        Driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))");
+    }
+
     /** add to bag method **/
     protected void clickOnAddToBagBtn(){
         String visibleText = "ADD TO BAG";
-        Driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))");
+        scrollToVisibleText(visibleText);
         addToBagBtn = Driver.findElementById(AppUrl+"id/product_info_section_add_to_bag_button");
         addToBagBtn.click();
     }
