@@ -10,7 +10,11 @@ public class BasePage extends DriverManager {
     private MobileElement registerBtn;
     protected MobileElement signInBtn;
     protected MobileElement loginBtn;
-    protected static String AppUrl = "com.poqstudio.app.platform.missguided:";
+    protected static String AppUrl;
+
+    public BasePage(){
+        AppUrl=new ReadProperty().getData("appUrl");
+    }
 
     /** click on method**/
     protected void clickOnElement(MobileElement element){

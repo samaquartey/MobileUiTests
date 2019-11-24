@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     protected void goToMyAccountPage(String text){
         clickOnGetStated();
         clickOnMoreOptions();
-        optionList = Driver.findElements(By.id("com.poqstudio.app.platform.missguided:id/title"));
+        optionList = Driver.findElements(By.id(AppUrl+"id/title"));
         for (MobileElement element : optionList) {
             if (element.getText().equals(text)) {
                 element.click();
@@ -27,8 +27,8 @@ public class LoginPage extends BasePage {
     }
 
     protected void signInToMyAccount(){
-        emailTxtInput = Driver.findElementById("com.poqstudio.app.platform.missguided:id/activity_login_emailText");
-        passwordTxtInput = Driver.findElementById("com.poqstudio.app.platform.missguided:id/activity_login_password_editText");
+        emailTxtInput = Driver.findElementById(AppUrl+"id/activity_login_emailText");
+        passwordTxtInput = Driver.findElementById(AppUrl+"id/activity_login_password_editText");
         sendKeysToElementInput(emailTxtInput,readPropertyFile("username"));
         sendKeysToElementInput(passwordTxtInput,readPropertyFile("password"));
         clickOnLoginBtn();
