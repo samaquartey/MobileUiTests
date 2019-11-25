@@ -33,4 +33,8 @@ public class LoginPage extends BasePage {
         sendKeysToElementInput(passwordTxtInput,readPropertyFile("password"));
         clickOnLoginBtn();
     }
+
+    protected void logoutFromMyAccount(){
+
+    }
 }

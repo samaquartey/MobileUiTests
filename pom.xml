@@ -155,9 +155,8 @@
           <!--Custom Properties-->
           <systemPropertyVariables>
             <env>androidLocal</env>
+            <driver>androidApp</driver>
             <timer>30</timer>
-            <!--<browser>chrome</browser>-->
-            <!--<browser>androidDriver</browser>-->
           </systemPropertyVariables>
 
           <forkCount>1</forkCount>
