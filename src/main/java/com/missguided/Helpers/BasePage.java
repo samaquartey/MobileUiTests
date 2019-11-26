@@ -1,19 +1,43 @@
 package com.missguided.Helpers;
+
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class BasePage extends DriverManager {
 
+    @AndroidFindBy(id ="com.poqstudio.app.platform.missguided:id/product_info_section_add_to_bag_button")
     private MobileElement addToBagBtn;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/onboarding_activity_get_started_btn")
     private MobileElement getStarted;
+
+    @AndroidFindBy(accessibility = "Open navigation drawer")
     private MobileElement burgerIcon;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/action_more")
     private MobileElement moreOptions;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/content_block_login_view_register_button")
     private MobileElement registerBtn;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button")
     protected MobileElement signInBtn;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/activity_login_login_button")
     protected MobileElement loginBtn;
-    protected static String AppUrl;
+
+    @AndroidFindBy(id = "com.android.packageinstaller:id/permission_allow_button")
+    protected MobileElement allowPermissionBtn;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/title")
+    protected List<MobileElement> optionList;
 
     public BasePage(){
-        AppUrl=new ReadProperty().getData("appUrl");
+        PageFactory.initElements(new AppiumFieldDecorator(Driver), this);
     }
 
     /** click on method**/
@@ -41,7 +65,6 @@ public class BasePage extends DriverManager {
     protected void clickOnAddToBagBtn(){
         String visibleText = "ADD TO BAG";
         scrollToVisibleText(visibleText);
-        addToBagBtn = Driver.findElementById(AppUrl+"id/product_info_section_add_to_bag_button");
         addToBagBtn.click();
     }
 
@@ -51,44 +74,39 @@ public class BasePage extends DriverManager {
     }
 
     protected void clickOnGetStated(){
-        getStarted = Driver.findElementById(AppUrl+"id/onboarding_activity_get_started_btn");
         getStarted.click();
     }
 
     protected void clickBurgerIcon(){
-        burgerIcon = Driver.findElementByAccessibilityId("Open navigation drawer");
         burgerIcon.click();
     }
 
     protected void clickOnMoreOptions(){
-        moreOptions = Driver.findElementById(AppUrl+"id/action_more");
         moreOptions.click();
     }
 
-    protected MobileElement getSignInBtn(){
-        return Driver.findElementById(AppUrl+"id/content_block_login_view_sign_in_button");
-    }
-
-    protected MobileElement getRegisterBtn(){
-        return Driver.findElementById(AppUrl+"id/content_block_login_view_register_button");
-    }
-
     protected boolean checkElementsOnRegisterOrSignInPage(){
-        signInBtn = getSignInBtn();
-        registerBtn = getRegisterBtn();
         return signInBtn.isDisplayed() && signInBtn.isEnabled()
                 && registerBtn.isDisplayed() && registerBtn.isEnabled();
     }
 
     /** click allow permission to system folders**/
     protected void clickAllowPermissionBtn(){
-        MobileElement allow = Driver.findElementById("com.android.packageinstaller:id/permission_allow_button");
-        clickOnElement(allow);
+        clickOnElement(allowPermissionBtn);
     }
 
     /** click on signIn into my account**/
     public void clickOnLoginBtn(){
-        loginBtn = Driver.findElementById(AppUrl+"id/activity_login_login_button");
         clickOnElement(loginBtn);
+    }
+
+    protected void goToHomePage(){
+        clickOnMoreOptions();
+        for (MobileElement element : optionList) {
+            if (element.getText().equals("Home")) {
+                element.click();
+                break;
+            }
+        }
     }
 }

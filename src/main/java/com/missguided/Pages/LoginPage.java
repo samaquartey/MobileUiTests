@@ -1,18 +1,26 @@
 package com.missguided.Pages;
+
 import com.missguided.Helpers.BasePage;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.By;
-import java.util.List;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class LoginPage extends BasePage {
-    private List<MobileElement> optionList;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/activity_login_emailText")
     private MobileElement emailTxtInput;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/activity_login_password_editText")
     private MobileElement passwordTxtInput;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/content_block_logout_button")
+    private MobileElement logoutBtn;
+
+    @AndroidFindBy(id = "android:id/button1")
+    private MobileElement acceptLogout;
 
     protected void goToMyAccountPage(String text){
         clickOnGetStated();
         clickOnMoreOptions();
-        optionList = Driver.findElements(By.id(AppUrl+"id/title"));
         for (MobileElement element : optionList) {
             if (element.getText().equals(text)) {
                 element.click();
@@ -22,19 +30,19 @@ public class LoginPage extends BasePage {
     }
 
     protected void goToSignInPage(){
-        clickOnElement(getSignInBtn());
+        clickOnElement(signInBtn);
         clickAllowPermissionBtn();
     }
 
     protected void signInToMyAccount(){
-        emailTxtInput = Driver.findElementById(AppUrl+"id/activity_login_emailText");
-        passwordTxtInput = Driver.findElementById(AppUrl+"id/activity_login_password_editText");
         sendKeysToElementInput(emailTxtInput,readPropertyFile("username"));
         sendKeysToElementInput(passwordTxtInput,readPropertyFile("password"));
         clickOnLoginBtn();
     }
 
     protected void logoutFromMyAccount(){
-
+        scrollToVisibleText("LOGOUT");
+        clickOnElement(logoutBtn);
+        clickOnElement(acceptLogout);
     }
 }

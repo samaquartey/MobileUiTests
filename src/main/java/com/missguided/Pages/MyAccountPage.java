@@ -1,21 +1,26 @@
 package com.missguided.Pages;
 import com.missguided.Helpers.BasePage;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.By;
+import io.appium.java_client.pagefactory.AndroidFindAll;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AndroidFindBys;
+import org.openqa.selenium.support.FindAll;
+
 import java.util.List;
 
 public class MyAccountPage extends BasePage {
 
-    private String welcomePageMessage;
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/content_block_account_welcome_text_view")
+    private MobileElement welcomePageMessage;
+
+    @AndroidFindBy(className = "android.widget.TextView")
     private List<MobileElement> displayElements;
 
     public String getWelcomePageMessage(){
-        welcomePageMessage = Driver.findElementById(AppUrl+"id/content_block_account_welcome_text_view").getText();
-        return welcomePageMessage;
+        return welcomePageMessage.getText();
     }
 
     public int checkAllDisplayMenus(){
-        displayElements = Driver.findElements(By.id(AppUrl+"id/content_block_link_view_text_view"));
         return displayElements.size();
     }
 
@@ -24,7 +29,7 @@ public class MyAccountPage extends BasePage {
         String addressBook = menus[0];
         String myAccount = menus[1];
         String orderHistory = menus[2];
-        displayElements = Driver.findElements(By.id(AppUrl+"id/content_block_link_view_text_view"));
+
         return displayElements.stream().anyMatch(element -> element.getText().equals(addressBook))
                 && displayElements.stream().anyMatch(element -> element.getText().equals(myAccount))
                 && displayElements.stream().anyMatch(element -> element.getText().equals(orderHistory));

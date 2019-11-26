@@ -25,7 +25,8 @@ public class LoginSteps extends LoginPage {
     @Then("^I am successfully on expected page & have \"([^\"]*)\"$")
     public void iAmSuccessfullyOnExpectedPageHave(String menus) {
         Assert.assertEquals("account message is wrong","Welcome " + readPropertyFile("user"),myAccountPage.getWelcomePageMessage());
-        Assert.assertEquals("count is not correct",8,myAccountPage.checkAllDisplayMenus());
+        Assert.assertEquals("count is not correct",12,myAccountPage.checkAllDisplayMenus());
         Assert.assertTrue("menus don't exist",myAccountPage.checkMenusExist(menus));
+        logoutFromMyAccount();
     }
 }
