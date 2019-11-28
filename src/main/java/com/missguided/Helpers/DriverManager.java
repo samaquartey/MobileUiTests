@@ -1,5 +1,6 @@
 package com.missguided.Helpers;
 
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,7 +10,8 @@ import java.net.URL;
 
 public class DriverManager {
     /** AndroidDriver **/
-    protected static AndroidDriver<MobileElement> Driver;
+    //protected static AndroidDriver<MobileElement> Driver;
+    protected static MobileDriver<MobileElement> Driver;
 
     private DesiredCapabilities caps;
     protected ReadProperty readProperty;
