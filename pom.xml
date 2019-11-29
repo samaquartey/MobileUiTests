@@ -154,7 +154,7 @@
         <configuration>
           <!--Custom Properties-->
           <systemPropertyVariables>
-            <env>androidLocal</env>
+            <env>local</env>
             <driver>androidApp</driver>
             <timer>30</timer>
           </systemPropertyVariables>
