@@ -2,6 +2,7 @@ package com.missguided.ApiObjects;
 import com.missguided.Api.ApiBase;
 import org.json.JSONObject;
 
+
 public class LoginObjects extends ApiBase {
 
     public JSONObject loginApiJsonObject(){
@@ -10,4 +11,5 @@ public class LoginObjects extends ApiBase {
         loginDetails.put(readProperty.getData("loginPassword"), readProperty.getData("password"));
         return loginDetails;
     }
+
 }
