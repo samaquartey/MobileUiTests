@@ -20,10 +20,6 @@ public class TestHooks extends DriverManager {
     @Before(order = 1)
     public void SetUpApp() {
         switch (System.getProperty("driver")){
-            case "androidBrowser":
-                initiateAndroidBrowserDriver();
-                break;
-
             case "androidApp":
                 initiateAndroidAppDriver();
                 break;

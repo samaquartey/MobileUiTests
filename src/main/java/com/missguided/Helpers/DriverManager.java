@@ -26,21 +26,6 @@ public class DriverManager {
 
 
     /** launch App on mobile device **/
-    protected void initiateAndroidBrowserDriver() {
-        WebDriverManager.seleniumServerStandalone().setup();
-        try {
-            caps.setCapability("platformName", readProperty.getData("platformNameAndroid"));
-            caps.setCapability("deviceName", readProperty.getData("androidDeviceName"));
-            caps.setCapability("appPackage", readProperty.getData("appPackage"));
-            caps.setCapability("appActivity", readProperty.getData("appActivity"));
-            Driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /** launch App on mobile device **/
     protected void initiateAndroidAppDriver() {
         WebDriverManager.seleniumServerStandalone().setup();
         try {
