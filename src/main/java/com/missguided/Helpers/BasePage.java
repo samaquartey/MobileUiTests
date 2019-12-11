@@ -1,9 +1,19 @@
 package com.missguided.Helpers;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.List;
 
 public class BasePage extends DriverManager {
@@ -35,10 +45,15 @@ public class BasePage extends DriverManager {
     @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/title")
     protected List<MobileElement> optionList;
 
+    public WebDriverWait wait;
+    protected TouchAction touchAction;
+
 
     /** PageFactory Initialization **/
     public BasePage(){
         PageFactory.initElements(new AppiumFieldDecorator(Driver), this);
+        wait = new WebDriverWait(Driver, 30);
+        touchAction = new TouchAction(Driver);
     }
 
     /** click on method**/
@@ -109,5 +124,94 @@ public class BasePage extends DriverManager {
                 break;
             }
         }
+    }
+
+
+    public void swipeRight(MobileElement element) {
+        Dimension dimension = element.getSize();
+        int anchor = element.getSize().getHeight()/2;
+        int start = (int) (dimension.getWidth() * 0.8);
+        int end = (int) (dimension.getWidth() * 0.1);
+        touchAction.press(PointOption.point(start, anchor)).moveTo(PointOption.point(end, anchor))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(3)))
+                .release().perform();
+    }
+
+
+    public void swipeLeft(MobileElement element) {
+        Dimension dimension = element.getSize();
+        int anchor = element.getSize().getHeight()/2;
+        int start = (int) (dimension.getWidth() * 0.1);
+        int end = (int) (dimension.getWidth() * 0.8);
+        touchAction.press(PointOption.point(start, anchor)).moveTo(PointOption.point(end, anchor))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(3)))
+                .release().perform();
+    }
+
+
+    public void scrollDown() {
+        Dimension dimension = Driver.manage().window().getSize();
+        int start = (int) (dimension.getHeight() * 0.5);
+        int end = (int) (dimension.getHeight() * 0.2);
+        touchAction.press(PointOption.point(0, start))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                .moveTo(PointOption.point(0, end))
+                .release().perform();
+    }
+
+    public void scrollAndClickOnElement(MobileElement element) {
+        while(element.isDisplayed() == false) {
+            scrollDown();
+            break;
+        }
+        if(element.isDisplayed() == true) {
+            element.click();
+        }
+    }
+
+    public boolean waitForVisibility(By targetElement) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(targetElement));
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("Element is not visible: " + targetElement);
+            throw e;
+
+        }
+    }
+
+    public boolean waitForInvisibility(By targetElement) {
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver, 30);
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(targetElement));
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("Element is still visible: " + targetElement);
+            System.out.println();
+            System.out.println(e.getMessage());
+            throw e;
+
+        }
+    }
+
+
+    public Boolean isElementPresent(By by)  {
+        Boolean flag=false;
+        try {
+            flag = Driver.findElements(by).size() > 0;
+        }catch ( Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return flag;
+    }
+
+    public Boolean isElementsPresent(By by)  {
+        Boolean flag=false;
+        try {
+            flag = Driver.findElements(by).size() > 0;
+        }catch ( Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return flag;
     }
 }
