@@ -163,11 +163,13 @@ public class BasePage extends DriverManager {
     public void scrollAndClickOnElement(MobileElement element) {
 
         try {
-            while(!element.isDisplayed()) {
-                scrollDown();
-                if(element.isDisplayed())
-                    element.click();
-                break;
+            if (!element.isDisplayed()) {
+                do {
+                    scrollDown();
+                    if (element.isDisplayed())
+                        element.click();
+                    break;
+                } while (!element.isDisplayed());
             }
         }
         catch (StaleElementReferenceException e) {
