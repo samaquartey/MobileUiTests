@@ -55,7 +55,8 @@ public class DriverManager {
     protected void quitDriver(){
         if (Driver != null)
             Driver.closeApp();
-            Driver.quit();
+        assert Driver != null;
+        Driver.quit();
             Driver = null;
     }
 

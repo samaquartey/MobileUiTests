@@ -1,4 +1,4 @@
-package com.missguided.Steps.UI;
+package com.missguided.Steps;
 
 import com.missguided.Pages.ClearancePage;
 import cucumber.api.java.en.Given;

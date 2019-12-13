@@ -8,13 +8,14 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BasePage extends DriverManager {
 
@@ -160,13 +161,19 @@ public class BasePage extends DriverManager {
     }
 
     public void scrollAndClickOnElement(MobileElement element) {
-        while(element.isDisplayed() == false) {
-            scrollDown();
-            break;
+
+        try {
+            while(element.isDisplayed() == false) {
+                scrollDown();
+                if(element.isDisplayed() == true)
+                    element.click();
+                break;
+            }
         }
-        if(element.isDisplayed() == true) {
-            element.click();
+        catch (StaleElementReferenceException e) {
+            System.out.println(e);
         }
+
     }
 
     public boolean waitForVisibility(By targetElement) {

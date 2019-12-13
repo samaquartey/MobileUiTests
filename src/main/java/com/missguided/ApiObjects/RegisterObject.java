@@ -1,9 +1,10 @@
 package com.missguided.ApiObjects;
-import com.missguided.Api.ApiBase;
+
 import org.json.JSONObject;
+
 import java.util.UUID;
 
-public class RegisterObject extends ApiBase {
+public class RegisterObject {
     private String form_key;
     private String area_of_site;
     private int is_subscribed;

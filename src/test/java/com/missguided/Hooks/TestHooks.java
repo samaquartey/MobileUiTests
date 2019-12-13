@@ -24,6 +24,10 @@ public class TestHooks extends DriverManager {
                 initiateAndroidAppDriver();
                 break;
 
+            case "iosApp":
+                initiateIOSAppDriver();
+                break;
+
             default:
                 String noOption = "no such case";
                 System.out.println(noOption);
