@@ -1,5 +1,6 @@
 package com.missguided.Helpers;
 
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -9,12 +10,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DriverManager {
-    /** AndroidDriver **/
-    protected static AndroidDriver<MobileElement> Driver;
-
-    /** IOS Driver **/
-    //protected static IOSDriver<MobileElement> Driver;
-
+    /** MobileDriver **/
+    protected static MobileDriver<MobileElement> Driver;
 
     private DesiredCapabilities caps;
     protected ReadProperty readProperty;
@@ -41,7 +38,7 @@ public class DriverManager {
 
 
     /** launch App on mobile device **/
-    /**protected void initiateIOSAppDriver() {
+    protected void initiateIOSAppDriver() {
         WebDriverManager.seleniumServerStandalone().setup();
         try {
             caps.setCapability("platformName", readProperty.getData("platformNameIos"));
@@ -52,7 +49,7 @@ public class DriverManager {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     /** Quit App on mobile device **/
     protected void quitDriver(){
