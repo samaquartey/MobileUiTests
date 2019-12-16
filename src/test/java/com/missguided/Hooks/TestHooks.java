@@ -4,7 +4,6 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
 import java.util.concurrent.TimeUnit;
 
 public class TestHooks extends DriverManager {

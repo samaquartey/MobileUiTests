@@ -41,7 +41,7 @@ public class LoginPage extends BasePage {
     }
 
     protected void logoutFromMyAccount(){
-        scrollToVisibleText("LOGOUT");
+        androidScrollToVisibleText("LOGOUT");
         clickOnElement(logoutBtn);
         clickOnElement(acceptLogout);
     }

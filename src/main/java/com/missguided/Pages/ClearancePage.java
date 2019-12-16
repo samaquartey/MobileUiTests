@@ -17,13 +17,13 @@ public class ClearancePage extends BasePage
     public void goToClearancePage(String category) {
         clickOnGetStated();
         clickBurgerIcon();
-        scrollAndClickWithVisibleText(category);
+        androidScrollAndClickVisibleText(category);
         //scrollAndClickOnElement();
     }
 
 
     public void addItemToBag(String item){
-        scrollAndClickWithVisibleText(item);
+        androidScrollAndClickVisibleText(item);
         clickOnAddToBagBtn();
         clickOnElement(sizeXs);
         clickOnElement(bagItems);

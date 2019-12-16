@@ -1,15 +1,13 @@
 package com.missguided.Helpers;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -68,19 +66,22 @@ public class BasePage extends DriverManager {
     }
 
     /** scroll to element using visible text and click **/
-    protected void scrollAndClickWithVisibleText(String visibleText) {
-        //Driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))").click();
+    protected void androidScrollAndClickVisibleText(String visibleText) {
+        MobileElement element = Driver.findElement(MobileBy.
+                AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))"));
+        clickOnElement(element);
     }
 
     /** scroll to element using visible text **/
-    protected void scrollToVisibleText(String visibleText) {
-        //Driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))");
+    protected void androidScrollToVisibleText(String visibleText) {
+        Driver.findElement(MobileBy.
+                AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))"));
     }
 
     /** add to bag method **/
     protected void clickOnAddToBagBtn(){
         String visibleText = "ADD TO BAG";
-        scrollToVisibleText(visibleText);
+        androidScrollToVisibleText(visibleText);
         addToBagBtn.click();
     }
 
@@ -204,7 +205,7 @@ public class BasePage extends DriverManager {
 
 
     public Boolean isElementPresent(By by)  {
-        Boolean flag=false;
+        boolean flag=false;
         try {
             flag = Driver.findElements(by).size() > 0;
         }catch ( Exception e) {
@@ -214,7 +215,7 @@ public class BasePage extends DriverManager {
     }
 
     public Boolean isElementsPresent(By by)  {
-        Boolean flag=false;
+        boolean flag=false;
         try {
             flag = Driver.findElements(by).size() > 0;
         }catch ( Exception e) {
