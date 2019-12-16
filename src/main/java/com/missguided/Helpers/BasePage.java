@@ -7,10 +7,11 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -175,52 +176,5 @@ public class BasePage extends DriverManager {
         catch (StaleElementReferenceException e) {
             System.out.println(e);
         }
-
-    }
-
-    public boolean waitForVisibility(By targetElement) {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(targetElement));
-            return true;
-        } catch (TimeoutException e) {
-            System.out.println("Element is not visible: " + targetElement);
-            throw e;
-
-        }
-    }
-
-    public boolean waitForInvisibility(By targetElement) {
-        try {
-            WebDriverWait wait = new WebDriverWait(Driver, 30);
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(targetElement));
-            return true;
-        } catch (TimeoutException e) {
-            System.out.println("Element is still visible: " + targetElement);
-            System.out.println();
-            System.out.println(e.getMessage());
-            throw e;
-
-        }
-    }
-
-
-    public Boolean isElementPresent(By by)  {
-        boolean flag=false;
-        try {
-            flag = Driver.findElements(by).size() > 0;
-        }catch ( Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return flag;
-    }
-
-    public Boolean isElementsPresent(By by)  {
-        boolean flag=false;
-        try {
-            flag = Driver.findElements(by).size() > 0;
-        }catch ( Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return flag;
     }
 }
