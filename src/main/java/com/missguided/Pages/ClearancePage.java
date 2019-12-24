@@ -18,7 +18,6 @@ public class ClearancePage extends BasePage
         clickOnGetStated();
         clickBurgerIcon();
         androidScrollAndClickVisibleText(category);
-        //scrollAndClickOnElement();
     }
 
 

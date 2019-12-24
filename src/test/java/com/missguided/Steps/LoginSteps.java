@@ -8,7 +8,11 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 public class LoginSteps extends LoginPage {
-    public MyAccountPage myAccountPage = new MyAccountPage();
+    private MyAccountPage myAccountPage;
+
+    public LoginSteps(){
+        myAccountPage = new MyAccountPage();
+    }
 
     @Given("^I am on the \"([^\"]*)\" page$")
     public void iAmOnTheMyAccountPage(String text) {

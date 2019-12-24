@@ -1,11 +1,8 @@
 package com.missguided.Pages;
+
 import com.missguided.Helpers.BasePage;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AndroidFindBys;
-import org.openqa.selenium.support.FindAll;
-
 import java.util.List;
 
 public class MyAccountPage extends BasePage {
@@ -29,7 +26,6 @@ public class MyAccountPage extends BasePage {
         String addressBook = menus[0];
         String myAccount = menus[1];
         String orderHistory = menus[2];
-
         return displayElements.stream().anyMatch(element -> element.getText().equals(addressBook))
                 && displayElements.stream().anyMatch(element -> element.getText().equals(myAccount))
                 && displayElements.stream().anyMatch(element -> element.getText().equals(orderHistory));
