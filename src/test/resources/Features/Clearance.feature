@@ -1,14 +1,15 @@
 Feature: Clearance
-  Select clearance category 4. Select the 7 item displayed
-  ( Currently its Black Sewn Through Disc Playsuit) 5. Add to Bag 6. Select Size
-  7. Allow Notifications 8. Select the Bag 9. Select Pay 10. Sign In and Register screen is displayed
+  As a user I view product display page
+  from clearance product list by clicking on
+  any selected product, and product display
+  page has product info.
 
   @regression
   Scenario Outline: 1. Verify Clearance page add to bag
     Given I'm on the "<Category>" screen
-    When I add "<Item>" to bag & click pay
-    Then I am on the Sign In and Register screen
+    When I click on any item
+    Then I am on the product display page
 
     Examples:
-    | Category | Item                                            |
-    |Clearance | Black Satin Diamante Cut Out Bodycon Mini Dress |
+    | Category |
+    |Clearance |

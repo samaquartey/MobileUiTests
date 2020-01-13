@@ -16,20 +16,29 @@ import java.util.List;
 
 public class BasePage extends DriverManager {
 
+    @AndroidFindBy(id ="com.poqstudio.app.platform.missguided:id/product_info_section_title_text_view")
+    protected MobileElement productNameContainer;
+
+    @AndroidFindBy(id ="com.poqstudio.app.platform.missguided:id/prices_special_price")
+    protected MobileElement specialPriceContainer;
+
+    @AndroidFindBy(id ="com.poqstudio.app.platform.missguided:id/prices_old_price")
+    protected MobileElement oldPriceContainer;
+
     @AndroidFindBy(id ="com.poqstudio.app.platform.missguided:id/product_info_section_add_to_bag_button")
-    private MobileElement addToBagBtn;
+    protected MobileElement addToBagBtn;
 
     @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/onboarding_activity_get_started_btn")
-    private MobileElement getStarted;
+    protected MobileElement getStarted;
 
     @AndroidFindBy(accessibility = "Open navigation drawer")
-    private MobileElement burgerIcon;
+    protected MobileElement burgerIcon;
 
     @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/action_more")
-    private MobileElement moreOptions;
+    protected MobileElement moreOptions;
 
     @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/content_block_login_view_register_button")
-    private MobileElement registerBtn;
+    protected MobileElement registerBtn;
 
     @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button")
     protected MobileElement signInBtn;
@@ -42,6 +51,12 @@ public class BasePage extends DriverManager {
 
     @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/title")
     protected List<MobileElement> optionList;
+
+    @AndroidFindBy(id = "com.poqstudio.app.platform.missguided:id/activity_modular_bag_checkout_button")
+    protected MobileElement checkOutBtn;
+
+    @AndroidFindBy(accessibility = "Bag")
+    protected MobileElement bagItems;
 
     public WebDriverWait wait;
     protected TouchAction touchAction;

@@ -13,13 +13,20 @@ public class ClearanceSteps extends ClearancePage {
         goToClearancePage(category);
     }
 
-    @When("^I add \"([^\"]*)\" to bag & click pay$")
-    public void iAddToBagClickPay(String item) {
-        addItemToBag(item);
+    @When("^I click on any item$")
+    public void iAddToBagClickPay() {
+        clickOnAnyItem();
     }
 
-    @Then("^I am on the Sign In and Register screen$")
+    @Then("^I am on the product display page$")
     public void iAmOnTheSignInAndRegisterScreen() {
-        Assert.assertTrue("SignIn or Register btn not present", checkElementsOnRegisterOrSignInPage());
+        Assert.assertTrue("add to bag should be displayed but it's not", addToBagBtn.isDisplayed());
+        Assert.assertEquals("add to bag text is not correct", "ADD TO BAG", addToBagBtn.getText());
+        Assert.assertTrue("product name element not displayed", productNameContainer.isDisplayed());
+        Assert.assertFalse("there is no product name text", productNameContainer.getText().isEmpty());
+        Assert.assertTrue("special price element not displayed", specialPriceContainer.isDisplayed());
+        Assert.assertFalse("there is no special price text", specialPriceContainer.getText().isEmpty());
+        Assert.assertTrue("old price element not displayed", oldPriceContainer.isDisplayed());
+        Assert.assertFalse("there is no old price text", oldPriceContainer.getText().isEmpty());
     }
 }
