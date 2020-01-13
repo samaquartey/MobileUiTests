@@ -28,7 +28,7 @@ public class DriverManager {
         try {
             caps.setCapability("platformName", readProperty.getData("platformNameAndroid"));
             caps.setCapability("deviceName", readProperty.getData("androidDeviceName"));
-            caps.setCapability("deviceId", readProperty.getData("deviceId"));
+            //caps.setCapability("deviceId", readProperty.getData("deviceId"));
             caps.setCapability("appPackage", readProperty.getData("appPackage"));
             caps.setCapability("appActivity", readProperty.getData("appActivity"));
             Driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
