@@ -20,7 +20,7 @@
 
     <!--WebDriverManager-->
     <webdrivermanager.version>3.7.1</webdrivermanager.version>
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
     <selenium.version>3.141.59</selenium.version>
 
     <pico.version>2.15</pico.version>
